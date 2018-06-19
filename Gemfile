@@ -36,7 +36,8 @@ gem 'uglifier', '>= 1.3.0'
  gem 'jquery-rails'
  gem 'turbolinks'
  gem 'figaro'
-
+ gem 'bootstrap', '~> 4.1.1'
+ 
 
  # use devise for user login
  gem 'devise'
