@@ -1,0 +1,18 @@
+<% if @topic.errors.any? %>
+    <ul>
+        <% @topic.errors.full_messages.each do |message|%>
+            <li> <%= message %> </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @topic do |f|%>
+    
+    <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+<% end %>

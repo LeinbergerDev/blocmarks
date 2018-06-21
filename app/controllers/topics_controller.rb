@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Topic was saved."
       redirect_to @topic
     else
-      flash.now[:alert] = "An error prevented the topic from being saved"
+      # flash.now[:alert] = "An error prevented the topic from being saved"
       render :new
     end
   end
@@ -28,6 +28,17 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(topic_params)
+      flash[:notice] = "Topic was updated"
+      redirect_to topics_path
+    else
+      flash.now[:alert] = "An error prevented the topic from being updated."
+      render :edit
+    end
   end
 
   def destroy
@@ -45,7 +56,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :user_id)
+    params.require(:topic).permit(:title)
   end
 
 end
