@@ -1,0 +1,7 @@
+<h2 class="text-center"> New Bookmark </h2>
+<%= form_with(model: [@topic, @topic.bookmarks.build ], local: true) do |f|%>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.submit "Create" %>
+<% end %>
+

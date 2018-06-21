@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-resources :topics
+  get 'bookmarks/show'
+  get 'bookmarks/new'
+  get 'bookmarks/edit'
+resources :topics do
+  resources :bookmarks, only: [:show, :new, :edit, :update, :destroy, :create] 
+end
+
 
   devise_for :users
   get 'welcome/index'
