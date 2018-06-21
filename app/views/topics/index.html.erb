@@ -5,6 +5,7 @@
         <h2 class="topic-title"><%= link_to topic.title, topic%></h2>
         <div class="align-self-center">
         <%= link_to "Delete topic", [topic], method: :delete, data: {confirm: "Are you sure you want to delete #{topic.title}?"}, class: 'btn btn-small btn-danger' %>
+        <%= link_to "Update", edit_topic_path(topic.id), class: 'btn btn-primary btn-small'%>
         </div>
     </div>
     <div class="row">
