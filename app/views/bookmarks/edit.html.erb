@@ -1,6 +1,9 @@
 <h2 class="text-center"> Edit Bookmark </h2>
+<!--
 <%= form_for @bookmark, url: {controller: 'bookmarks', action: "update", method: :patch} do |f|%>
     <%= f.label :url %>
     <%= f.text_field :url %>
     <%= f.submit "Update" %>
-<% end %>
+<% end %> %>
+-->
+<%= render 'form', bookmark: @bookmark, topic: @topic%>
