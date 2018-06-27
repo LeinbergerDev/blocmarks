@@ -13,7 +13,7 @@ class IncomingController < ApplicationController
 
     # user_object = User.find_by email: user
       @user = User.find_by(email: user)
-
+      puts "#{@user.email}"
       if @user
         puts "user found"
         @topic = Topic.find_by(title: topic)
