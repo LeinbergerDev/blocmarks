@@ -10,6 +10,21 @@ class IncomingController < ApplicationController
     puts "#{topic}"
     body = params["body-plain"]
     puts "#{body}"
+
+    user_object = User.find_by email: user
+
+    if !user_object
+
+    topic_object = Topic.find_by title: topic
+
+    if topic_object 
+      @bookmark = Topic.bookmark.create(url: body)
+    else
+      @topic = Topic.new(title: topic)
+      @topic.user_id = user_object.id
+      @bookmark = @topic.bookmark.create(url: body)
+    end
+    
     head 200
   end
 end
