@@ -12,7 +12,7 @@ class IncomingController < ApplicationController
     puts "#{body}"
 
     # user_object = User.find_by email: user
-      @user = User.find_by(email: params[:user])
+      @user = User.find_by(email: user)
 
       if @user
         @topic = Topic.find_by(title: topic)
