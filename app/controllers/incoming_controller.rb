@@ -12,22 +12,22 @@ class IncomingController < ApplicationController
     puts "#{body}"
 
     # user_object = User.find_by email: user
-      @user = User.find_by(email: user)
-      puts "#{@user.email}"
-      if @user
+      user_object = User.find_by(email: user)
+      puts "#{user_object.email}"
+      if user_object
         puts "user found"
-        @topic = Topic.find_by(title: topic)
-        if @topic
+        topic_object = Topic.find_by(title: topic)
+        if topic_object
           puts "topic found"
-          @bookmark = Topic.bookmark.create(url: body, topic_id: @topic.id)
-          @topic.save
+          bookmark = Topic.bookmark.create(url: body, topic_id: @topic.id)
+          bookmark.save
           else
           puts "no topic found"
-          @topic = Topic.new(title: topic)
-          @topic.user_id = @user.id
-          @topic.save
-          @bookmark = @topic.bookmark.create(url: body, topic_id: @topic.id)
-          @bookmark.save
+          topic_object = Topic.new(title: topic)
+          topic_object.user_id = @user.id
+          topic_object.save
+          bookmark = topic_object.bookmark.create(url: body, topic_id: @topic.id)
+          bookmark.save
         end
         puts "user not found"
       end
