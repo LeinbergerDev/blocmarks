@@ -4,7 +4,7 @@ class IncomingController < ApplicationController
   def create
     puts "INCOMING PARAMS HERE: #{params}"
 
-    user = params[:user]
+    user = params[:sender]
     puts "#{user}"
     topic = params[:subject]
     puts "#{topic}"
