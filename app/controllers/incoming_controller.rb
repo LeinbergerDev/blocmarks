@@ -1,6 +1,6 @@
 class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
-
+  skip_before_action :authenticate_user!
   def create
     puts "INCOMING PARAMS HERE: #{params}"
 
@@ -14,29 +14,18 @@ class IncomingController < ApplicationController
     # user_object = User.find_by email: user
       @user = User.find_by(email: params[:user])
 
-      if @user
-        @topic = Topic.find_by(title: topic)
-        @topic.user_id = @user.id
-        if @topic
-          @bookmark = Topic.bookmark.create(url: body, @topic.id)
-          @topic.save
-          else
-          @topic = Topic.new(title: topic)
-          @bookmark = @topic.bookmark.create(url: body, @topic.id)
-        end
+      # if @user
+      #   @topic = Topic.find_by(title: topic)
+      #   @topic.user_id = @user.id
+      #   if @topic
+      #     @bookmark = Topic.bookmark.create(url: body, @topic.id)
+      #     @topic.save
+      #     else
+      #     @topic = Topic.new(title: topic)
+      #     @bookmark = @topic.bookmark.create(url: body, @topic.id)
+      #   end
         
-      end
-    # if !user_object
-
-    # topic_object = Topic.find_by title: topic
-
-    # if topic_object 
-    #   @bookmark = Topic.bookmark.create(url: body)
-    # else
-    #   @topic = Topic.new(title: topic)
-    #   @topic.user_id = user_object.id
-    #   @bookmark = @topic.bookmark.create(url: body)
-    # end
+      # end
 
     head 200
   end
