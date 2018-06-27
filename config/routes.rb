@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-resources :topics do
-  resources :bookmarks, only: [:show, :new, :edit, :update, :destroy, :create] 
-end
+
+  get 'incoming/create'
+  post :incoming, to: 'incoming#create'
+
+  resources :topics do
+    resources :bookmarks, only: [:show, :new, :edit, :update, :destroy, :create] 
+  end
 
 
   devise_for :users
