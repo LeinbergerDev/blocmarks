@@ -29,7 +29,7 @@ class IncomingController < ApplicationController
           @bookmark = @topic.bookmark.create(url: body, topic_id: @topic.id)
           @bookmark.save
         end
-        
+        puts "user not found"
       end
 
     head 200
