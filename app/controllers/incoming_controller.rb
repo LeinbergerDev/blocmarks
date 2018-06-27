@@ -22,7 +22,9 @@ class IncomingController < ApplicationController
           @topic.save
           else
           @topic = Topic.new(title: topic)
+          @topic.save
           @bookmark = @topic.bookmark.create(url: body, topic_id: @topic.id)
+          @bookmark.save
         end
         
       end
