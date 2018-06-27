@@ -26,7 +26,7 @@ class IncomingController < ApplicationController
           topic_object = Topic.create!(title: topic, user_id: user_object.id)
           # topic_object.user_id = user_object.id
           topic_object.save
-          bookmark = topic_object.bookmark.create(url: body, topic_id: @topic_object.id)
+          bookmark = topic_object.bookmarks.create(url: body, topic_id: topic_object.id)
           bookmark.save
         end
         puts "user not found"
