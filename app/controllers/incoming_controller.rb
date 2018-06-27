@@ -15,11 +15,14 @@ class IncomingController < ApplicationController
       @user = User.find_by(email: user)
 
       if @user
+        puts "user found"
         @topic = Topic.find_by(title: topic)
         if @topic
+          puts "topic found"
           @bookmark = Topic.bookmark.create(url: body, topic_id: @topic.id)
           @topic.save
           else
+          puts "no topic found"
           @topic = Topic.new(title: topic)
           @topic.user_id = @user.id
           @topic.save
