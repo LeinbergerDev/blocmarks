@@ -18,11 +18,11 @@ class IncomingController < ApplicationController
         @topic = Topic.find_by(title: topic)
         @topic.user_id = @user.id
         if @topic
-          @bookmark = Topic.bookmark.create(url: body, @topic.id)
+          @bookmark = Topic.bookmark.create(url: body, topic_id: @topic.id)
           @topic.save
           else
           @topic = Topic.new(title: topic)
-          @bookmark = @topic.bookmark.create(url: body, @topic.id)
+          @bookmark = @topic.bookmark.create(url: body, topic_id: @topic.id)
         end
         
       end
