@@ -17,6 +17,7 @@ class IncomingController < ApplicationController
         puts "user not found Create user"
         user_object = User.create(email: user, encrypted_password: 'PleaseChangePassword')
         user_object.save
+        user_object = User.find_by(email: user.downcase!)
       end
       topic_object = Topic.find_by(title: topic)
       if topic_object
