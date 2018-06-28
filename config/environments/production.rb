@@ -115,5 +115,4 @@ Rails.application.configure do
   
   # Makes debugging *way* easier.
   ActionMailer::Base.raise_delivery_errors = true
-}
 end
