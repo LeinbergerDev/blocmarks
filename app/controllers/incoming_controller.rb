@@ -19,7 +19,7 @@ class IncomingController < ApplicationController
         topic_object = Topic.find_by(title: topic)
         if topic_object
           puts "topic found"
-          bookmark = Topic.bookmark.create(url: body, topic_id: topic_object.id)
+          bookmark = topic_object.bookmarks.create(url: body, topic_id: topic_object.id)
           bookmark.save
           else
           puts "no topic found"
