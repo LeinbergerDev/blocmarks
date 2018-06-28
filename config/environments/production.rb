@@ -93,14 +93,27 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = {:host => 'https://leinberger-blocmarks.herokuapp.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV['CONFIRMABLE_EMAIL'],
-    password: ENV['CONFIRMABLE_PASSWORD']
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "example.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: ENV['CONFIRMABLE_EMAIL'],
+  #   password: ENV['CONFIRMABLE_PASSWORD']
+  ActionMailer::Base.smtp_settings = {
+    port:              587,
+    address:           'smtp.mailgun.org',
+    user_name:         ENV['MAILGUN_SMTP_LOGIN'],
+    password:          ENV['MAILGUN_SMTP_PASSWORD'],
+    domain:            'https://leinberger-blocmarks.herokuapp.com',
+    authentication:    :plain,
+    content_type:      'text/html'
+  }
+  ActionMailer::Base.delivery_method = :smtp
+  
+  # Makes debugging *way* easier.
+  ActionMailer::Base.raise_delivery_errors = true
 }
 end
