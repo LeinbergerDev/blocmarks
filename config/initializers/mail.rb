@@ -9,7 +9,6 @@ ActionMailer::Base.smtp_settings = {
     enable_starttls_auto: true
   }
   ActionMailer::Base.delivery_method = :smtp
-  
   # Makes debugging *way* easier.
   ActionMailer::Base.raise_delivery_errors = true
 
