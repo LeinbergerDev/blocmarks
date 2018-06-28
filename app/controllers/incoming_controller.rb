@@ -14,7 +14,7 @@ class IncomingController < ApplicationController
     # user_object = User.find_by email: user
       user_object = User.find_by(email: user.downcase!)
       if !user_object
-        user_object = User.create(email: user.downcase!, password: 'PleaseChangePassword')
+        user_object = User.create(email: user.downcase!, encrypted_password: 'PleaseChangePassword')
         user_object.save
       end
       topic_object = Topic.find_by(title: topic)
