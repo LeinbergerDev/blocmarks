@@ -6,7 +6,7 @@ class IncomingController < ApplicationController
 
     email = params[:sender]
     puts "#{user}"
-    topic = params[:subject]
+    title = params[:subject]
     puts "#{topic}"
     body = params["body-plain"]
     puts "#{body}"
@@ -19,17 +19,17 @@ class IncomingController < ApplicationController
         user.save
         user = User.find_by(email: email.downcase!)
       end
-      topic_object = Topic.find_by(title: topic)
-      if topic_object
+      topic_object = Topic.find_by(title: title)
+      if topic
         puts "topic found"
-        bookmark = topic_object.bookmarks.create(url: body, topic_id: topic_object.id)
+        bookmark = topic.bookmarks.create(url: body, topic_id: topic.id)
         bookmark.save
         else
         puts "no topic found"
-        topic_object = Topic.create!(title: topic, user_id: user.id)
+        topic = Topic.create!(title: topic, user_id: user.id)
         # topic_object.user_id = user.id
-        topic_object.save
-        bookmark = topic_object.bookmarks.create(url: body, topic_id: topic_object.id)
+        topic.save
+        bookmark = topic.bookmarks.create(url: body, topic_id: topic.id)
         bookmark.save
       end
     head 200
