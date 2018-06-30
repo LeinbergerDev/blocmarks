@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
     address:           'smtp.mailgun.org',
     user_name:         ENV['MAILGUN_SMTP_LOGIN'],
     password:          ENV['MAILGUN_SMTP_PASSWORD'],
-    domain:            'mg.leinbergertechnologies.com',
+    domain:            'https://leinberger-blocmarks.herokuapp.com',
     authentication:    :plain,
     content_type:      'text/html',
     enable_starttls_auto: true
@@ -11,3 +11,4 @@ ActionMailer::Base.smtp_settings = {
   ActionMailer::Base.delivery_method = :smtp
   # Makes debugging *way* easier.
   ActionMailer::Base.raise_delivery_errors = true
+
