@@ -26,7 +26,7 @@ class IncomingController < ApplicationController
         bookmark.save
         else
         puts "no topic found"
-        topic = Topic.create!(title: topic, user_id: user.id)
+        topic = Topic.create!(title: title, user_id: user.id)
         # topic_object.user_id = user.id
         topic.save
         bookmark = topic.bookmarks.create(url: body, topic_id: topic.id)
