@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
 
   resources :topics do
+    
     resources :bookmarks, only: [:show, :new, :edit, :update, :destroy, :create] 
   end
-
+  get 'mytopics/', to: 'topics#mytopics', as: :mytopics
 
   devise_for :users
   get 'welcome/index'

@@ -5,6 +5,10 @@ class TopicsController < ApplicationController
     @bookmarks = Bookmark.all
   end
 
+  def mytopics
+    @topics = Topic.where(user_id: current_user.id)
+  end
+
   def show
     @topic = Topic.find(params[:id])
     @bookmarks = Bookmark.where("topic_id = #{@topic.id}")

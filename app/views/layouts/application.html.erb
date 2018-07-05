@@ -15,6 +15,10 @@
         <ul class="nav justify-content-end">
           <% if user_signed_in? %>
             <li class="nav-item">
+              <%= link_to "All Topics", topics_path %>
+              <%= link_to "My Topics", mytopics_path %>
+            </li>
+            <li class="nav-item">
               Signed in as: <strong> <%= current_user.email %> </strong> 
             </li>
             <li class="nav-item"><%= link_to 'Edit Profile', edit_user_registration_path %> </li>
