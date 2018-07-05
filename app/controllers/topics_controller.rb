@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+
   def index
     @topics = Topic.all
     @bookmarks = Bookmark.all
@@ -16,11 +17,12 @@ class TopicsController < ApplicationController
   def create 
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
+    authorize @topic
     if @topic.save
       flash[:notice] = "Topic was saved."
       redirect_to @topic
     else
-      # flash.now[:alert] = "An error prevented the topic from being saved"
+      flash.now[:alert] = "An error prevented the topic from being saved"
       render :new
     end
   end
@@ -32,6 +34,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
+    authorize @topic
     if @topic.update_attributes(topic_params)
       flash[:notice] = "Topic was updated"
       redirect_to topics_path
@@ -43,7 +46,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
-
+    authorize @topic
     if @topic.destroy
       flash[:notice] = "Topic was deleted"
       redirect_to topics_path
