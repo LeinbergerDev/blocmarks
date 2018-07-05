@@ -2,8 +2,6 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   skip_before_action :authenticate_user!
   def create
-    puts "INCOMING PARAMS HERE: #{params}"
-
     email = params[:sender]
     puts "#{email}"
     title = params[:subject]
@@ -27,7 +25,6 @@ class IncomingController < ApplicationController
         else
         puts "no topic found"
         topic = Topic.create!(title: title, user_id: user.id)
-        # topic_object.user_id = user.id
         topic.save
         bookmark = topic.bookmarks.create(url: body, topic_id: topic.id)
         bookmark.save
