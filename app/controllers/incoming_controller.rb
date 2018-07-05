@@ -5,9 +5,9 @@ class IncomingController < ApplicationController
     puts "INCOMING PARAMS HERE: #{params}"
 
     email = params[:sender]
-    puts "#{user}"
+    puts "#{email}"
     title = params[:subject]
-    puts "#{topic}"
+    puts "#{title}"
     body = params["body-plain"]
     puts "#{body}"
 
@@ -19,7 +19,7 @@ class IncomingController < ApplicationController
         user.save
         user = User.find_by(email: email.downcase!)
       end
-      topic_object = Topic.find_by(title: title)
+      topic = Topic.find_by(title: title)
       if topic
         puts "topic found"
         bookmark = topic.bookmarks.create(url: body, topic_id: topic.id)
