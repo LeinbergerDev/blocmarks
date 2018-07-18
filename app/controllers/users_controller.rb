@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user_topics = Topic.where(user_id: current_user.id)
-    @liked_bookmarks = Like.where(user_id: current_user.id)
 
     @topics = Topic.all
     @liked_topics = []
